@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/gh-pages/static/css/main.70b5fcdf.css",
-    "main.js": "/gh-pages/static/js/main.e522c58e.js",
-    "static/js/787.f4b733a1.chunk.js": "/gh-pages/static/js/787.f4b733a1.chunk.js",
-    "index.html": "/gh-pages/index.html",
-    "static/media/index.cjs": "/gh-pages/static/media/index.cd351d7c31d0d3fccf96.cjs",
-    "main.70b5fcdf.css.map": "/gh-pages/static/css/main.70b5fcdf.css.map",
-    "main.e522c58e.js.map": "/gh-pages/static/js/main.e522c58e.js.map",
-    "787.f4b733a1.chunk.js.map": "/gh-pages/static/js/787.f4b733a1.chunk.js.map"
+    "main.css": "/2daEntrega-React/static/css/main.70b5fcdf.css",
+    "main.js": "/2daEntrega-React/static/js/main.72b0444a.js",
+    "static/js/787.f4b733a1.chunk.js": "/2daEntrega-React/static/js/787.f4b733a1.chunk.js",
+    "index.html": "/2daEntrega-React/index.html",
+    "static/media/index.cjs": "/2daEntrega-React/static/media/index.cd351d7c31d0d3fccf96.cjs",
+    "main.70b5fcdf.css.map": "/2daEntrega-React/static/css/main.70b5fcdf.css.map",
+    "main.72b0444a.js.map": "/2daEntrega-React/static/js/main.72b0444a.js.map",
+    "787.f4b733a1.chunk.js.map": "/2daEntrega-React/static/js/787.f4b733a1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.70b5fcdf.css",
-    "static/js/main.e522c58e.js"
+    "static/js/main.72b0444a.js"
   ]
 }
