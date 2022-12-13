@@ -26,9 +26,9 @@ export const ProductCard = ({id, title, text, price, stock }) => {
                         <div> Price : <code>{price} USD</code></div>
                         <div> Available : <code>{stock} items</code></div></div>
                         <br></br>
-                        <Link to={`/store/${id}`} className="btn">Details</Link>
+                        <Link to={'/store/${id}'} className="btn">Details</Link>
                         <br></br>
-                        <div className='flex justify-center'><ProductCount stock={stock} id={id} addHandler={addHandler} addToCart={addToCart}/></div>
+                        <div className='flex justify-center'><ProductCount stock={stock} id={id}/></div>
                 </div>
 
             </div></div>

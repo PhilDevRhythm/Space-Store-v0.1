@@ -7,21 +7,26 @@ import Home from './components/Home';
 import ProductDetail from './components/ProductDetail';
 import Loading from './components/Loading';
 import Cart from './components/Cart';
-
+import data from './data/data';
 
 
 function App() {
+
+
+
+
   return (
     <BrowserRouter>
       <NavBar />
       <div className='block col-3'>
         <div className='block col-2'>
           <Routes>
+            
             <Route path='/' element={<Home />} />
             <Route path='/store/' element={<ProductList />} />
             {/* <Route path='/loading/' element={<Loading />} /> */}
             {/* <Route path='/store/:id' element={<ProductDetail/>}/> */}
-            <Route path='/store/:id' element={<ProductDetail />}/>
+            <Route path='/store/:id' element={<ProductDetail/>}/>
             <Route path='/cart' element={<Cart/>}/>
             {/* <Route path='/' element={<ProductList/>} />  */}
           </Routes>

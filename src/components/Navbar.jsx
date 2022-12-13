@@ -19,9 +19,9 @@ function Navbar() {
                     
                     </div>
                 <div>
-                    <Link  to={`/`} className="btn  btn-md m-1 justify-self-end">Home</Link>
+                    <Link  to={'/'} className="btn  btn-md m-1 justify-self-end">Home</Link>
                     <Link to={'/store'} className="btn  btn-md m-1 justify-self-end">Store</Link>
-                    <button className="btn  btn-md m-1 justify-self-end">Help</button>
+                    <button className="btn btn-md m-1 justify-self-end">Help</button>
                 </div>
                 <div className="flex-none bg-transparent">
                     <div className="dropdown dropdown-end">
