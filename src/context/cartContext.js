@@ -15,6 +15,7 @@ const CartContextProvider = ( { children } ) => {
   const [items, setItems] = useState( [] )
 
   const addToCart = ( item ) => {
+    // setItems( items => [...items, item])
     setItems( items => items.concat(item) )
   }
 
