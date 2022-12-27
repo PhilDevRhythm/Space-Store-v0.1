@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
 
 
-export const ProductCount = ({ stock }, props) => {
+export const ProductCount = ({ id, stock }, props) => {
 
     const { product, onAdd } = props;
     const [count, setcount] = useState(0);
-    const { id } = useParams()
+    // const { id } = useParams()
     
 
 

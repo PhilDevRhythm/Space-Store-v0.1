@@ -1,66 +1,83 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from './components/Navbar';
 import ProductList from './components/ProductList';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
 import Footer from './components/Footer';
 import Home from './components/Home';
-import ProductDetail from './components/ProductDetail';
-import Cart from './components/Cart';
-import data from './data/data';
-import ItemsList from './components/from_fb/ItemsList';
-import ItemList from './components/from_fb/ItemList';
-
-
+import Cart from './components/Cart'
+import Checkout from './components/Checkout';
 
 function App() {
 
-  const { products } = data;
+  const [show, setShow] = useState(1);
+  const [cart, setCart] = useState([]);
+  const [warning, setWarning] = useState(false);
 
-  const [cartItems, setCartItems] = useState([]);
+  const handleClick = (item) => {
+    let isPresent = false;
+		cart.forEach((product)=>{
+			if (item.id === product.id)
+			isPresent = true;
+		})
+		if (isPresent){
+			setWarning(true);
+			setTimeout(()=>{
+				setWarning(false);
+			}, 2000);
+			return ;
+		}
+		setCart([...cart, item]);
+	}
+  
+  console.log(cart);
 
-  const onAdd = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
-    if (exist) {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
-        )
-      );
-    } else {
-      setCartItems([...cartItems, { ...product, qty: 1 }]);
-    }
-  };
-  const onRemove = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
-    if (exist.qty === 1) {
-      setCartItems(cartItems.filter((x) => x.id !== product.id));
-    } else {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
-        )
-      );
-    }
-  };
+  const handleChange = (item, d) => {
+    
+    let ind = -1
 
+    cart.forEach((data, index)=>{
+      if (data.id === item.id)
+      ind = index;
+    })
+    
+    const tempArr = cart;
+    tempArr[ind] = d;
+    
+    if (tempArr[ind].amount === 0) 
+      tempArr[ind].amount = 1;
+    setCart([...tempArr])
+    console.log(tempArr);
+  }
+
+  // useEffect(() => {
+  //   console.log("cart change");
+  // }, [cart]);
 
 
   return (
-    <><BrowserRouter>
-      <NavBar cartItems={cartItems.length} />
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path='2daEntrega-React/' element={<Home />} />
-        <Route path='2daEntrega-React/store/' element={<ProductList products={products} onAdd={onAdd}/>} />
-        <Route path='2daEntrega-React/store/:id' element={<ProductDetail />} />
-        <Route path='2daEntrega-React/cart' element={<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} products={products}/>} />
-        <Route path='2daEntrega-React/items' element={<ItemsList/>} />
-        <Route path='2daEntrega-React/item' element={<ItemList/>} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
-    </>
-  );
-}
+    <>
 
+      <BrowserRouter>
+        <NavBar setShow={setShow} size={cart.length}/>
+        {/* {if show == 1 <ProductList handleClick={handleClick}/>
+          }if else{ <Cart cart={cart} setCart={setCart} handleChange={handleChange}/>} */}
+
+        {warning && <div className='alert-warning'>Item is already added to your cart</div>}
+        <Routes>
+          <Route index element={<ProductList handleClick={handleClick}/>}/>
+          <Route path='/' element={<ProductList handleClick={handleClick} />} />
+          <Route path='/cart' element={<Cart cart={cart} setCart={setCart} handleChange={handleChange}/>} />
+          {/* <Route index element={<Home />} />
+          <Route path='2daEntrega-React/' element={<Home />} /> */}
+          {/* <Route path='2daEntrega-React/store/' element={<ProductList />} /> */}
+          {/* <Route path="2daEntrega-React/store/:id" element={<ProductDetail/>} /> */}
+          <Route path='/checkout' element={<Checkout cart={cart}/>} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+
+    </>
+        );
+        
+        }
 export default App;

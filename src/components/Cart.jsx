@@ -1,72 +1,69 @@
 import React from 'react'
-import { useCart } from "../context/cartContext"
+import { useState, useEffect } from "react";
 
-export default function Cart({props}) {
+const Cart = ({cart, setCart, handleChange}) => {
+    
+    const[price, setPrice] = useState(0);
 
-    const { cartItems, onAdd, onRemove, products} = props;
+    
 
-    const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
-    const taxPrice = itemsPrice * 0.14;
-    const shippingPrice = itemsPrice > 2000 ? 0 : 20;
-    const totalPrice = itemsPrice + taxPrice + shippingPrice;
 
-    return (
-        <aside>
-            {cartItems.length === 0 && <div>Cart is empty</div>}
-            {cartItems.map((item) => (
-                <div key={item.id} className="row">
-                    <div className="col-2">{item.name}</div>
-                    <div className="col-2">
-                        <button onClick={() => onRemove(item)} className="remove">
-                            -
-                        </button>{' '}
-                        <button onClick={() => onAdd(item)} className="add">
-                            +
-                        </button>
-                    </div>
+    const handlePrice = () => {
+        let ans = 0
+        cart.map((item) => (
+            ans += item.amount * item.dprice));
+        setPrice(ans);
+        console.log(ans);
+        
+        
+    }
 
-                    <div className="col-2 text-right">
-                        {item.qty} x ${item.price.toFixed(2)}
-                        <div className="m-10 text-xl">
-                            <div>Cart</div>
-                            <div>{cartItems.map((i) => <li key={i}>{i}</li>)}</div>
-                            <button className="btn">Clear your Cart</button>
-                        </div></div></div>))}
-                        
-            {cartItems.length !== 0 && (
-                <>
-                    <hr></hr>
-                    <div className="row">
-                        <div className="col-2">Items Price</div>
-                        <div className="col-1 text-right">${itemsPrice.toFixed(2)}</div>
-                    </div>
-                    <div className="row">
-                        <div className="col-2">Tax Price</div>
-                        <div className="col-1 text-right">${taxPrice.toFixed(2)}</div>
-                    </div>
-                    <div className="row">
-                        <div className="col-2">Shipping Price</div>
-                        <div className="col-1 text-right">
-                            ${shippingPrice.toFixed(2)}
-                        </div>
-                    </div>
+    
+    const handleRemove = (id) => {
+        const arr = cart.filter((item) => item.id !== id);
+        setCart(arr)
+        // handlePrice();
+    }
 
-                    <div className="row">
-                        <div className="col-2">
-                            <strong>Total Price</strong>
-                        </div>
-                        <div className="col-1 text-right">
-                            <strong>${totalPrice.toFixed(2)}</strong>
-                        </div>
+    useEffect(() => {
+        handlePrice();
+    })
+
+  return (
+    <div>
+        <div className='text-center text-white text-3xl'>Total Price for your Cart is {price}</div>
+    <div className='flex flex-wrap p-5'>
+        {
+        cart?.map((item) =>
+        <div className="text-center card w-80 bg-slate-600 shadow-xl text-white p-5 m-4" key={item.id}>
+        <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+            <div className="card-body">
+            <h2 className="card-title">{item.title}</h2>
+                <p>{item.text}</p>
+                <span>Original Price: <span className='line-through'>{item.price}</span> USD</span>
+                <span>Discounted Price: {item.dprice} USD</span>
+                <span>Quantity you want: {item.amount}</span>
+                <span>Total Price for this item</span>
+                <span> {item.dprice * item.amount} USD</span>
+                <div className="card-actions justify-end text-center">
+                <button className='btn btn-info text-white w-1' onClick={()=> handleChange (item, +1)}>+</button>
+                <button className='btn btn-success text-white w-1'>{item.amount}</button>
+                <button className='btn btn-info text-white w-1' onClick={()=> handleChange (item, -1)}>-</button>
+                <button className='btn btn-warning text-white w-20' onClick={() => handleRemove(item.id)}>Remove</button>
+                {console.log(item)}
+                </div>
                     </div>
-                    <hr />
-                    <div className="row">
-                        <button onClick={() => alert('Implement Checkout!')}>
-                            Checkout
-                        </button>
+                    
                     </div>
-                </>
-            )}
-        </aside >
-                    )
+            
+        
+    )}</div>
+    <div className='text-white'> Cart Product List
+        {cart.map((item) => <><div>{item.title}</div> <div></div></> )}
+
+</div></div>)
+                   
 }
+
+
+export default Cart

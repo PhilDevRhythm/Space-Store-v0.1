@@ -2,20 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ProductCount from './ProductCount'
 import { useParams } from 'react-router-dom'
-import {  useCartContext } from "../context/cartContext"
 
-export const ProductCard = ({id, title, text, price, stock }, onAdd) => {
-    
-    // const { addToCart } = useCartContext()
-    
-    // const addHandler = () => {
-    //     addToCart( id )
-    
-    // }
 
-    useParams(id)
-
+export const ProductCard = ({item, handleClick}) => {
     
+
+    const {id, title, text, price, stock } = item
+      
+   
     return (
 
         <div className="flex flex-wrap p-5">
@@ -29,9 +23,9 @@ export const ProductCard = ({id, title, text, price, stock }, onAdd) => {
                         <div> Price : <code>{price} USD</code></div>
                         <div> Available : <code>{stock} items</code></div></div>
                         <br></br>
-                        <Link  id={id} to={`id=${id}`} className="btn">Details</Link>
+                       <button className='btn btn-success text-white' onClick={()=>handleClick(item)}>Add to cart</button>
                         <br></br>
-                        <div className='flex justify-center'><ProductCount addToCart={onAdd} stock={stock} id={id} /></div>
+                        
                 </div>
 
             </div></div>
