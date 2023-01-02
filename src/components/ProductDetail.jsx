@@ -1,14 +1,14 @@
-import data from "../data/data.js";
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ProductCount from './ProductCount';
 
 
 
-function ProductDetail({ title, text, price, stock }) {
+function ProductDetail({ item }) {
 
     const [item, setItem] = useState([]);
     const { id } = useParams()
+    const { title, text, price, stock } = item
 
 
     useEffect(() => {
@@ -38,7 +38,7 @@ function ProductDetail({ title, text, price, stock }) {
                         <div> Price : <code>{item.price} USD</code></div>
                         <div> Available : <code>{JSON.stringify(item)} items</code></div></div>
                     <br></br>
-                    <div className='flex justify-center'><ProductCount stock={stock} id={item.id} /></div>
+                    <div className='flex justify-center'></div>
                 </div>
 
             </div></div>
