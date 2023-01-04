@@ -13,7 +13,7 @@ function Loading() {
 
 return (
     <div className='text-center p-5'>
-        { loading ? <strong className='text-xl text-white btn'>Loading...</strong> : <strong className='text-xl text-white'></strong>}
+        { loading ? <strong className='text-xl text-white btn btn-warning'>Loading...</strong> : <strong className='text-xl text-white'></strong>}
            
     </div>
 

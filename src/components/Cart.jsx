@@ -1,20 +1,24 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import prodList from '../data/prodList';
 
 
-const Cart = ({ cart, setCart, handleChange, price, handlePrice, handleRemove }) => {
+const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
 
+
+    const [count, setCount] = useState(1);
+    const [item, setItem] = useState([]);
 
     useEffect(() => {
-        handlePrice();
-    })
+        handlePrice();})
 
     return (
+
         <div>
             <br />
-            <div className='text-center text-white text-3xl justify-self-center'>Total Price for your Cart is : <code>$ {price} USD</code><br /><br />
-                <div><Link className='btn' to={{ pathname: "/checkout", cartProps: { price: { price } } }}>CheckOut</Link></div></div>
+            <div className='text-center text-white text-3xl justify-self-center'>Total price  of your cart is : <code>$ {price} USD</code><br /><br />
+                <div><Link className='btn btn-outline btn-warning text-xl' to={{ pathname: "/checkout", cartProps: { price: { price } } }}>CheckOut</Link></div></div>
             <div className='flex flex-wrap p-5 justify-center'>
                 {
                     cart.map((item) =>
@@ -32,9 +36,9 @@ const Cart = ({ cart, setCart, handleChange, price, handlePrice, handleRemove })
                                 <div className="card-actions justify-center text-center p-5">
                                     <br />
 
-                                    <button className='btn btn-outline btn-warning w-1 text-2xl' onClick={() => handleChange(item, +1)}>+</button>
-                                    <button className='btn btn-outline btn-warning w-1 text-2xl '>{item.amount}</button>
-                                    <button className='btn btn-outline btn-warning w-1 text-2xl' onClick={() => handleChange(item, -1)}>-</button>
+                                    <button className='btn btn-outline btn-warning w-1 text-2xl' onClick={() => setCount(item.amount += 1) + console.log("check", item.amount)}>+</button>
+                                    <button className='btn btn-outline btn-warning w-1 text-2xl'>{item.amount}</button>
+                                    <button className='btn btn-outline btn-warning w-1 text-2xl' onClick={() => setCount(item.amount -= 1)}>-</button>
                                     <br />
                                     <br />
                                     <button className='btn btn-outline btn-warning w-15' onClick={() => handleRemove(item.id)}>Remove</button>
@@ -46,7 +50,7 @@ const Cart = ({ cart, setCart, handleChange, price, handlePrice, handleRemove })
 
 
                     )}</div></div>)
-}
-
+                }
+                
 
 export default Cart

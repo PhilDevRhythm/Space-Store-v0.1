@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import Cart from './Cart';
 import CheckOut from './Checkout';
 
-function Navbar({ setShow, size}) {
+function Navbar({ setShow, size, price, handlePrice}) {
 
 
     let cartLenght = size
-    let cartPrice = 0
-
+    let cartPrice = price
+    
+    useEffect(() => {
+        handlePrice();
+    })
     
     return (
 
@@ -22,6 +25,7 @@ function Navbar({ setShow, size}) {
                 <div>
                 </div>
                 <div className="flex-none bg-transparent">
+                <code className='text-white'>$ {cartPrice}</code>
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle">
                             <div className="indicator">
@@ -30,11 +34,14 @@ function Navbar({ setShow, size}) {
                             </div>
                         </label>
                         <div tabIndex={0} className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
+                        
                             <div className="card-body">
+                                
                                 <span className="font-bold text-lg">{cartLenght} Items</span>
                                 <span className="text-info">Subtotal:{cartPrice}</span>
                                 <div className="card-actions">
                                     <Link className='btn' to='/checkout'>CheckOut</Link>
+                                    <div></div>
                                     <Link className="btn" to="/cart" >Your Cart</Link>
                                 </div>
                             </div>
