@@ -30,7 +30,7 @@ function StoreDetail({ data, handleClick }) {
                                         <div className=' p-2 flex justify-center my-5'>
                                             <Link><button className='p-2 btn btn-outline btn-warning text-white' onClick={() => handleClick(card)}>Add to cart</button></Link>
                                             <div className='m-2'></div>
-                                            <Link className='btn btn-warning btn-outline' to={`/store/product/${card.id}`}>View Details</Link>
+                                            
                                         </div>
                                         <div className='flex justify-center'></div>
                                     </div>

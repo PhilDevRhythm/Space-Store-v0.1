@@ -4,7 +4,7 @@ import StoreCard from './StoreCard'
 function StoreContainer({ data, handleClick }) {
     return (
         <>
-            <div className='flex'>
+        <div className='md:flex md:flex-wrap'>
             <StoreCard data={data} handleClick={handleClick}/>
             </div>
         </>

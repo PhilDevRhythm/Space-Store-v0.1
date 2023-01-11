@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import NavBar from './components/Navbar';
-import ProductList from './components/ProductList';
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 
@@ -27,10 +27,11 @@ function App() {
     cart.forEach((product) => {
       if (item.id === product.id)
         isPresent = true;
-      if (item.amount >= product.stock)
-        return
-      if (item.amount === 0)
-        return
+        return item
+      // if (item.amount >= product.stock)
+      //   return
+      // if (item.amount === 0)
+      //   return
     })
     if (isPresent) {
       setWarning(true);
@@ -74,12 +75,12 @@ function App() {
 
 
           <Route exact path='/store' element={<StoreContainer data={prodList} handlePrice={handlePrice} />} />
-          <Route path='/store/product/:product_id' element={<StoreDetail data={prodList} />} />
+          <Route path='/store/product/:product_id' element={<StoreDetail data={prodList} handleClick={handleClick}/>} />
 
 
 
 
-          <Route path='/' element={<ProductList handleClick={handleClick} />} />
+          
           <Route path='/cart' element={<Cart cart={cart} setCart={setCart} price={price} handlePrice={handlePrice} handleRemove={handleRemove} />} />
           <Route path='/checkout' element={<Checkout cart={cart} price={price} />} />
 

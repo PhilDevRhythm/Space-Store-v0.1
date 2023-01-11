@@ -21,17 +21,23 @@ const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
         <div>
             <br />
             <div className='text-center text-white text-3xl justify-self-center'>Total price  of your cart is : <code>$ {price} USD</code><br /><br />
-                <div><Link className='btn btn-outline btn-warning text-xl' to={{ pathname: "/checkout", cartProps: { price: { price } } }}>CheckOut</Link></div></div>
+                <div className='flex justify-center'>
+                    <div><Link className='btn btn-outline btn-warning text-xl mx-2' to='/'>Back to Store</Link></div>
+                    <div><Link className='btn btn-outline btn-warning text-xl mx-2' to={{ pathname: "/checkout", cartProps: { price: { price } } }}>CheckOut</Link>
+                    </div>
+                </div>
+            </div>
             <div className='flex flex-wrap p-5 justify-center'>
                 {
                     cart.map((item) =>
-                        <div className="text-center w-90 card card-side h-80 bg-slate-600 shadow-xl text-white p-5 m-4" key={item.id}>
+                        <div className="text-center w-70 card card-side h-90 bg-slate-600 shadow-xl text-white p-5 m-4" key={item.id}>
                             <figure><img className='mask mask-squircle ' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                             <div className="card-body text-justify">
                                 <h2 className="card-title">{item.title}</h2>
                                 <p className=''>{item.text}</p>
                                 <ul><li className='list-none'>
                                     <p>Category: <Link className='btn btn-outline btn-warning -5' to={`/store/${item.category}`}>{item.category}</Link></p>
+                                    <span>Quantity Available: <code className='btn-outline text-white'>{item.stock}</code></span><br />
                                     <span>Quantity you want: <code className='btn-outline text-white'>{item.amount}</code></span><br />
                                     <span className=''>Original Price: <code className='line-through'>{item.price}</code> USD</span><br />
                                     <span>Discounted Price: <code className='btn-outline text-white'>{item.dprice}</code> USD</span><br />

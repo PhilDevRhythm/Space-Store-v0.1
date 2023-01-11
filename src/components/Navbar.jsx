@@ -38,7 +38,7 @@ function Navbar({ setShow, size, price, handlePrice}) {
                             <div className="card-body">
                                 
                                 <span className="font-bold text-lg">{cartLenght} Items</span>
-                                <span className="text-info">Subtotal:{cartPrice}</span>
+                                <span className="text-info">Subtotal: $ USD {cartPrice}</span>
                                 <div className="card-actions">
                                     <Link className='btn' to='/checkout'>CheckOut</Link>
                                     <div></div>
