@@ -8,17 +8,20 @@ import Cart from './components/Cart'
 import Checkout from './components/Checkout';
 import ProductDetail from './components/ProductDetail';
 import prodList from './data/prodList';
+import StoreContainer from './components/Store/StoreContainer';
+import StoreDetail from './components/Store/StoreDetail';
+
 
 function App() {
 
-  
+
   const [show, setShow] = useState(1);
   const [cart, setCart] = useState([]);
   const [warning, setWarning] = useState(false);
   const [price, setPrice] = useState(0);
 
-  
-    
+
+
   const handleClick = (item) => {
     let isPresent = false;
     cart.forEach((product) => {
@@ -53,7 +56,7 @@ function App() {
     <>
 
       <BrowserRouter>
-        <NavBar  size={cart.length} price={price} handlePrice={handlePrice}/>
+        <NavBar size={cart.length} price={price} handlePrice={handlePrice} />
         {warning && <>
           <div className='alert alert-warning shadow-lg'>
             <div>
@@ -65,11 +68,20 @@ function App() {
 
 
         <Routes>
-          <Route index element={<ProductList handleClick={handleClick} />} />
+          <Route index element={<StoreContainer data={prodList} handleClick={handleClick} />} />
+
+
+          <Route exact path='/store' element={<StoreContainer data={prodList} handlePrice={handlePrice} />} />
+          <Route path='/store/product/:product_id' element={<StoreDetail data={prodList} />} />
+
+
+
+
           <Route path='/' element={<ProductList handleClick={handleClick} />} />
           <Route path='/cart' element={<Cart cart={cart} setCart={setCart} price={price} handlePrice={handlePrice} handleRemove={handleRemove} />} />
           <Route path='/checkout' element={<Checkout cart={cart} price={price} />} />
-          <Route path='/:productId' element={<ProductDetail/>} />
+
+          {/* <Route path='/store/product/:id' element={<ProductDetail data={prodList}/>} /> */}
         </Routes>
         <Footer />
       </BrowserRouter>

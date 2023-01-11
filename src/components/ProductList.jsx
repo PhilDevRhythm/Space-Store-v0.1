@@ -22,13 +22,10 @@ const ProductList = ({item, handleClick}) => {
 
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve(prodList.products)
+                resolve(prodList)
             }, 2000)
         })
     }
-console.log(prodList.products);
-
-
 
     return (
         <><Loading />

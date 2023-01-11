@@ -6,10 +6,10 @@ import ProductList from './ProductList';
 
 
 
-function ProductDetail({id}) {
+function ProductDetail ({ data }) {
 
     const [item, setItem] = useState([]);
-    // const { id } = useParams()
+    const { id } = useParams()
     
     useEffect(() => {
         getItem()},
