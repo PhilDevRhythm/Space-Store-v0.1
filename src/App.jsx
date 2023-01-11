@@ -8,6 +8,8 @@ import Cart from './components/Cart'
 import Checkout from './components/Checkout';
 import ProductDetail from './components/ProductDetail';
 import prodList from './data/prodList';
+import ProductDetailContainer from './components/ProductDetailContainer';
+import Category from './components/Category';
 
 function App() {
 
@@ -65,11 +67,14 @@ function App() {
 
 
         <Routes>
-          <Route index element={<ProductList handleClick={handleClick} />} />
-          <Route path='/' element={<ProductList handleClick={handleClick} />} />
+          {/* <Route index element={<ProductList handleClick={handleClick} />} /> */}
+          <Route path='/' element={<ProductList handleClick={handleClick}/>}/>
+          <Route path='/' element={<Category/>}/>
           <Route path='/cart' element={<Cart cart={cart} setCart={setCart} price={price} handlePrice={handlePrice} handleRemove={handleRemove} />} />
           <Route path='/checkout' element={<Checkout cart={cart} price={price} />} />
-          <Route path='/:productId' element={<ProductDetail/>} />
+          <Route path='/store/product/id:product_id' element={<ProductDetailContainer preData={prodList}/>} />
+          <Route path='/store/category/telescopes' element={<ProductList/>} category_id={"telescopes"}/>
+          <Route path='/store/category/accesories' element={<ProductList/>} category_id={"accesories"}/>
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import ProductCount from './ProductCount'
 import { useParams } from 'react-router-dom'
 import ProductDetail from './ProductDetail'
+import prodList from '../data/prodList'
 
 
 export const ProductCard = ({ item, handleClick }) => {
@@ -12,7 +13,7 @@ export const ProductCard = ({ item, handleClick }) => {
 
 
     return (
-
+        <> 
         <div className="flex p-5">
             <div className="card w-70 bg-slate-600 shadow-xl text-white p-5">
                 <figure><img className='mask mask-squircle' src="https://placeimg.com/500/260/arch" alt="test" /></figure>
@@ -28,12 +29,13 @@ export const ProductCard = ({ item, handleClick }) => {
                     <div className='flex justify-center'>
                         <Link><button className='p-2 btn btn-outline btn-warning text-white' onClick={() => handleClick(item)}>Add to cart</button></Link>
                         <div className='m-2'></div>
-                        <button className='p-2 btn btn-outline btn-warning text-white' onClick={() => <ProductDetail id={item.id} />}>View Details</button>
+                        <Link className='p-2 btn btn-outline btn-warning text-white' to={`/store/product/id:${item.id}`}>View Details</Link>
+                        
                     </div>
 
                 </div>
 
-            </div></div>
+            </div></div></>
 
 
     )
