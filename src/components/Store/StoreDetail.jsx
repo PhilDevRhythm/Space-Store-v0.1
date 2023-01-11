@@ -5,29 +5,32 @@ function StoreDetail({ data }) {
 
     const { product_id } = useParams();
 
-    const [item, setItem] = useState([]);
 
-    setItem(data)
-    console.log(item);
+
+
+
 
     return (
-        <>
-            <div className="full-detail">
-                <div className="explore-container">
-                    <div className='text-white text-5xl'>{product_id}</div>
-                    { item.filter((item) => item.id === product_id).map((item) => {
-                        <div key={item.id}>
-                            name {item.title}
-                        </div>
-                    })
-                    }
+
+        <div className="full-detail">
+
+            {data
+                .filter((card) => card.id === product_id)
+                .map((card) => {
+                    <div key={card.id}>
+                        {card.text}
+                        {card.title}
+                    </div>
+                })
+            }
 
 
 
-                </div>
+            <div className='text-white text-5xl'>{product_id}</div>
 
-            </div>
-        </>
+
+        </div>
+
     )
 }
 
