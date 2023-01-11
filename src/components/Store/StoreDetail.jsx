@@ -22,10 +22,12 @@ function StoreDetail({ data, handleClick }) {
                                     <h2 className="card-title">{card.title}</h2>
                                     <p>{card.text}</p>
                                     <br></br>
+                                    
+                                    <br></br>
                                     <div className="card-actions flex flex-row justify-center">
-                                        <div className='btn-outline btn-warning'> Available : <code>{card.stock} items</code><br></br>Price : <code className='line-through'>{card.price} USD</code><br /> Discount price : <code className='text-2xl'>{card.dprice} USD</code></div>
+                                        <div className='p-2'> <p>Category: <Link className='btn btn-outline btn-warning -5' to={`/store/${card.category}`}>{card.category}</Link></p> Available : <code>{card.stock} items</code><br></br>Price : <code className='line-through'>{card.price} USD</code><br /> Discount price : <code className='text-2xl'>{card.dprice} USD</code></div>
                                         <br></br></div>
-                                        <div className='flex justify-center my-5'>
+                                        <div className=' p-2 flex justify-center my-5'>
                                             <Link><button className='p-2 btn btn-outline btn-warning text-white' onClick={() => handleClick(card)}>Add to cart</button></Link>
                                             <div className='m-2'></div>
                                             <Link className='btn btn-warning btn-outline' to={`/store/product/${card.id}`}>View Details</Link>

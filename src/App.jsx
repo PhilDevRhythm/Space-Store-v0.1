@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import NavBar from './components/Navbar';
 import ProductList from './components/ProductList';
-import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
-import Home from './components/Home';
+
 import Cart from './components/Cart'
 import Checkout from './components/Checkout';
-import ProductDetail from './components/ProductDetail';
+
 import prodList from './data/prodList';
 import StoreContainer from './components/Store/StoreContainer';
 import StoreDetail from './components/Store/StoreDetail';

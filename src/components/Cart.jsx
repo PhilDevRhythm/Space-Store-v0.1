@@ -11,8 +11,9 @@ const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
     const [item, setItem] = useState([]);
 
     useEffect(() => {
-        handlePrice();})
-    
+        handlePrice();
+    })
+
 
 
     return (
@@ -30,6 +31,7 @@ const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
                                 <h2 className="card-title">{item.title}</h2>
                                 <p className=''>{item.text}</p>
                                 <ul><li className='list-none'>
+                                    <p>Category: <Link className='btn btn-outline btn-warning -5' to={`/store/${item.category}`}>{item.category}</Link></p>
                                     <span>Quantity you want: <code className='btn-outline text-white'>{item.amount}</code></span><br />
                                     <span className=''>Original Price: <code className='line-through'>{item.price}</code> USD</span><br />
                                     <span>Discounted Price: <code className='btn-outline text-white'>{item.dprice}</code> USD</span><br />
@@ -38,9 +40,9 @@ const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
                                 <div className="card-actions justify-center text-center p-5">
                                     <br />
 
-                                    <button className='btn btn-outline btn-warning w-1 text-2xl' onClick={() => {if (item.amount !== item.stock) {setCount(item.amount += 1)}}}>+</button>
+                                    <button className='btn btn-outline btn-warning w-1 text-2xl' onClick={() => { if (item.amount !== item.stock) { setCount(item.amount += 1) } }}>+</button>
                                     <button className='btn btn-outline btn-warning w-1 text-2xl'>{item.amount}</button>
-                                    <button className='btn btn-outline btn-warning w-1 text-2xl' onClick={() => {if (item.amount !== 0) {setCount(item.amount -= 1)}}}>-</button>
+                                    <button className='btn btn-outline btn-warning w-1 text-2xl' onClick={() => { if (item.amount !== 0) { setCount(item.amount -= 1) } }}>-</button>
                                     <br />
                                     <br />
                                     <button className='btn btn-outline btn-warning w-15' onClick={() => handleRemove(item.id)}>Remove</button>
@@ -52,7 +54,7 @@ const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
 
 
                     )}</div></div>)
-                }
-                
+}
+
 
 export default Cart
