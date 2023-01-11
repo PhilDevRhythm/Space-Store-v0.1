@@ -14,7 +14,7 @@ function StoreCard({ data, handleClick }) {
                                 <h2 className="card-title">{card.title}</h2>
                                 <p>{card.text}</p>
                                 <br></br>
-                                <div className="card-actions card" >
+                                <div className="card-actions card justify-center" >
                                     <div> Available : <code>{card.stock} items</code><br></br>Price : <code className='line-through'>{card.price} USD</code><br /> Discount price : <code className='text-2xl'>{card.dprice} USD</code></div>
 
 

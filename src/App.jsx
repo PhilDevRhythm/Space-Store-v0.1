@@ -10,6 +10,8 @@ import Checkout from './components/Checkout';
 import prodList from './data/prodList';
 import StoreContainer from './components/Store/StoreContainer';
 import StoreDetail from './components/Store/StoreDetail';
+import StoreCategory from './components/Store/StoreCategory';
+import Loading from './components/Loading';
 
 
 function App() {
@@ -27,7 +29,7 @@ function App() {
     cart.forEach((product) => {
       if (item.id === product.id)
         isPresent = true;
-        return item
+      return item
       // if (item.amount >= product.stock)
       //   return
       // if (item.amount === 0)
@@ -60,6 +62,7 @@ function App() {
 
       <BrowserRouter>
         <NavBar size={cart.length} price={price} handlePrice={handlePrice} />
+        <Loading />
         {warning && <>
           <div className='alert alert-warning shadow-lg'>
             <div>
@@ -75,12 +78,13 @@ function App() {
 
 
           <Route exact path='/store' element={<StoreContainer data={prodList} handlePrice={handlePrice} />} />
-          <Route path='/store/product/:product_id' element={<StoreDetail data={prodList} handleClick={handleClick}/>} />
+          <Route path='/store/product/:product_id' element={<StoreDetail data={prodList} handleClick={handleClick} />} />
+          <Route path='/store/category/:category' element={<StoreCategory data={prodList} handleClick={handleClick} />} />
 
 
 
 
-          
+
           <Route path='/cart' element={<Cart cart={cart} setCart={setCart} price={price} handlePrice={handlePrice} handleRemove={handleRemove} />} />
           <Route path='/checkout' element={<Checkout cart={cart} price={price} />} />
 
