@@ -27,7 +27,9 @@ function App() {
     cart.forEach((product) => {
       if (item.id === product.id)
         isPresent = true;
-      if (item.stock == product.stock)
+      if (item.amount >= product.stock)
+        return
+      if (item.amount === 0)
         return
     })
     if (isPresent) {

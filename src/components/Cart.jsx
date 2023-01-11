@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import prodList from '../data/prodList';
+
 
 
 const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
@@ -12,6 +12,8 @@ const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
 
     useEffect(() => {
         handlePrice();})
+    
+
 
     return (
 
@@ -36,9 +38,9 @@ const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
                                 <div className="card-actions justify-center text-center p-5">
                                     <br />
 
-                                    <button className='btn btn-outline btn-warning w-1 text-2xl' onClick={() => setCount(item.amount += 1) + console.log("check", item.amount)}>+</button>
+                                    <button className='btn btn-outline btn-warning w-1 text-2xl' onClick={() => {if (item.amount !== item.stock) {setCount(item.amount += 1)}}}>+</button>
                                     <button className='btn btn-outline btn-warning w-1 text-2xl'>{item.amount}</button>
-                                    <button className='btn btn-outline btn-warning w-1 text-2xl' onClick={() => setCount(item.amount -= 1)}>-</button>
+                                    <button className='btn btn-outline btn-warning w-1 text-2xl' onClick={() => {if (item.amount !== 0) {setCount(item.amount -= 1)}}}>-</button>
                                     <br />
                                     <br />
                                     <button className='btn btn-outline btn-warning w-15' onClick={() => handleRemove(item.id)}>Remove</button>
