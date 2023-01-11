@@ -22,7 +22,7 @@ function StoreCard({ data, handleClick }) {
                                     <div className='flex justify-center'>
                                         <Link><button className='p-2 btn btn-outline btn-warning text-white' onClick={() => handleClick(card) }>Add to cart</button></Link>
                                         <div className='m-2'></div>
-                                        <Link className='btn btn-warning btn-outline' to={`/store/product/${card.id}`}>View Details</Link>
+                                        <Link className='btn btn-warning btn-outline' to={`/2daEntrega-React/store/product/${card.id}`}>View Details</Link>
                                     </div></div>
 
                             </div>

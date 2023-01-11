@@ -16,10 +16,10 @@ function Loading() {
         <div className='text-center p-5'>
             {loading ? <strong className='text-xl text-white btn btn-warning'>Loading...</strong> :
                 <div className="flex text-center justify-center">
-                    <Link className='btn btn-outline btn-warning mx-5' to={'/'}>All</Link>
-                    <Link className='btn btn-outline btn-warning mx-5' to={'/store/category/telescopes'}>Telescopes</Link>
-                    <Link className='btn btn-outline btn-warning mx-5' to={'/store/category/lens'}>Lens</Link>
-                    <Link className='btn btn-outline btn-warning mx-5' to={'/store/category/accessories'}>accessories</Link>
+                    <Link className='btn btn-outline btn-warning mx-5' to={'/2daEntrega-React/'}>All</Link>
+                    <Link className='btn btn-outline btn-warning mx-5' to={'/2daEntrega-React/store/category/telescopes'}>Telescopes</Link>
+                    <Link className='btn btn-outline btn-warning mx-5' to={'/2daEntrega-React/store/category/lens'}>Lens</Link>
+                    <Link className='btn btn-outline btn-warning mx-5' to={'/2daEntrega-React/store/category/accessories'}>accessories</Link>
                 </div>}
 
         </div>

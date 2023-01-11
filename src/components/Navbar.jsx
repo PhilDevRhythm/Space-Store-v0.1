@@ -19,7 +19,7 @@ function Navbar({ setShow, size, price, handlePrice}) {
             <div className="navbar bg-stone-900">
                 <div className="flex-wrap flex-1 p-3 justify-start">
 
-                    <div><Link to="/"><img src='2daEntrega-React/logo.png'alt="logo"/></Link></div>
+                    <div><Link to="/2daEntrega-React/"><img src='2daEntrega-React/logo.png'alt="logo"/></Link></div>
 
                 </div>
                 <div>

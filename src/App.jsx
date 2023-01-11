@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import NavBar from './components/Navbar';
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
-
 import Cart from './components/Cart'
 import Checkout from './components/Checkout';
-
 import prodList from './data/prodList';
 import StoreContainer from './components/Store/StoreContainer';
 import StoreDetail from './components/Store/StoreDetail';
@@ -14,15 +11,12 @@ import StoreCategory from './components/Store/StoreCategory';
 import Loading from './components/Loading';
 
 
-function App() {
-
+const App = () => {
 
   const [show, setShow] = useState(1);
   const [cart, setCart] = useState([]);
   const [warning, setWarning] = useState(false);
   const [price, setPrice] = useState(0);
-
-
 
   const handleClick = (item) => {
     let isPresent = false;
@@ -30,10 +24,6 @@ function App() {
       if (item.id === product.id)
         isPresent = true;
       return item
-      // if (item.amount >= product.stock)
-      //   return
-      // if (item.amount === 0)
-      //   return
     })
     if (isPresent) {
       setWarning(true);
@@ -44,6 +34,7 @@ function App() {
     }
     setCart([...cart, item]);
   }
+
   const handlePrice = () => {
     let ans = 0
     cart.map((item) => (
@@ -56,10 +47,8 @@ function App() {
     setCart(arr)
   }
 
-
   return (
     <>
-
       <BrowserRouter>
         <NavBar size={cart.length} price={price} handlePrice={handlePrice} />
         <Loading />
@@ -71,30 +60,18 @@ function App() {
               <span>Item is already added to your cart, please modify quantity on your Cart </span>
             </div></div>
         </>}
-
-
         <Routes>
           <Route index element={<StoreContainer data={prodList} handleClick={handleClick} />} />
-
-
-          <Route exact path='/store' element={<StoreContainer data={prodList} handlePrice={handlePrice} />} />
-          <Route path='/store/product/:product_id' element={<StoreDetail data={prodList} handleClick={handleClick} />} />
-          <Route path='/store/category/:category' element={<StoreCategory data={prodList} handleClick={handleClick} />} />
-
-
-
-
-
-          <Route path='/cart' element={<Cart cart={cart} setCart={setCart} price={price} handlePrice={handlePrice} handleRemove={handleRemove} />} />
-          <Route path='/checkout' element={<Checkout cart={cart} price={price} />} />
-
-          {/* <Route path='/store/product/:id' element={<ProductDetail data={prodList}/>} /> */}
+          <Route exact path='/2daEntrega-React/' element={<StoreContainer data={prodList} handlePrice={handlePrice} />} />
+          <Route exact path='/2daEntrega-React/store' element={<StoreContainer data={prodList} handlePrice={handlePrice} />} />
+          <Route path='/2daEntrega-React/store/product/:product_id' element={<StoreDetail data={prodList} handleClick={handleClick} />} />
+          <Route path='/2daEntrega-React/store/category/:category' element={<StoreCategory data={prodList} handleClick={handleClick} />} />
+          <Route path='/2daEntrega-React/cart' element={<Cart cart={cart} setCart={setCart} price={price} handlePrice={handlePrice} handleRemove={handleRemove} />} />
+          <Route path='/2daEntrega-React/checkout' element={<Checkout cart={cart} price={price} />} />
         </Routes>
         <Footer />
       </BrowserRouter>
-
     </>
   );
-
 }
 export default App;

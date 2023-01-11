@@ -22,8 +22,8 @@ const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
             <br />
             <div className='text-center text-white text-3xl justify-self-center'>Total price  of your cart is : <code>$ {price} USD</code><br /><br />
                 <div className='flex justify-center'>
-                    <div><Link className='btn btn-outline btn-warning text-xl mx-2' to='/'>Back to Store</Link></div>
-                    <div><Link className='btn btn-outline btn-warning text-xl mx-2' to={{ pathname: "/checkout", cartProps: { price: { price } } }}>CheckOut</Link>
+                    <div><Link className='btn btn-outline btn-warning text-xl mx-2' to='/2daEntrega-React/'>Back to Store</Link></div>
+                    <div><Link className='btn btn-outline btn-warning text-xl mx-2' to={{ pathname: "/2daEntrega-React/checkout", cartProps: { price: { price } } }}>CheckOut</Link>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@ const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
                                 <h2 className="card-title">{item.title}</h2>
                                 <p className=''>{item.text}</p>
                                 <ul><li className='list-none'>
-                                    <p>Category: <Link className='btn btn-outline btn-warning -5' to={`/store/${item.category}`}>{item.category}</Link></p>
+                                    <p>Category: <Link className='btn btn-outline btn-warning -5' to={`/2daEntrega-React/store/category/${item.category}`}>{item.category}</Link></p>
                                     <span>Quantity Available: <code className='btn-outline text-white'>{item.stock}</code></span><br />
                                     <span>Quantity you want: <code className='btn-outline text-white'>{item.amount}</code></span><br />
                                     <span className=''>Original Price: <code className='line-through'>{item.price}</code> USD</span><br />
