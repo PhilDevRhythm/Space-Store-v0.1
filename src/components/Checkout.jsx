@@ -7,9 +7,9 @@ function Checkout({ cart, price }) {
 
 
     return (
-        <> <div><Link className='btn btn-outline btn-warning m-3' to='/2daEntrega-React/'>Back to Store</Link></div>
+        <> <div><Link className='btn btn-outline btn-warning m-3' to='/2daEntrega-React/store/category/all'>Back to Store</Link></div>
             <div>
-                <table>
+                <table className='table table-zebra w-full'>
                     <tr className='flex flex-wrap'>
                         <th className='text-white text-xl btn-warning m-2 '>Items on your Cart
                             <div className="text-white text-center flex card overflow-auto bg-slate-600 shadow-xl p-2 m-1"><div className='flex flex-col'>
