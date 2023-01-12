@@ -4,6 +4,10 @@ import { Link, useLocation } from 'react-router-dom'
 
 function Checkout({ cart, price }) {
 
+    
+    const payCart = () => {
+        
+    }
 
 
     return (
@@ -24,7 +28,7 @@ function Checkout({ cart, price }) {
                             </div></th>
 
                         <th className='text-white text-xl text-center'><div className='btn-warning m-2 p-2 text-center text-white'>Final<div><div className="text-white text-right col card overflow-auto  bg-slate-600 shadow-xl p-2 m-1">Total: ${price}
-                            <button className='btn btn-outline btn-warning text-2xl my-2'>Pay</button>
+                            <Link to={'/2daEntrega-React/checkout/pay'}  className='btn btn-outline btn-warning text-2xl my-2'>Pay</Link>
                         </div></div></div></th>
                     </tr>
                 </table>

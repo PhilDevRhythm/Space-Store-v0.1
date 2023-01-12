@@ -10,14 +10,20 @@ import StoreDetail from './components/Store/StoreDetail';
 import StoreCategory from './components/Store/StoreCategory';
 import Loading from './components/Loading';
 import Home from './components/Home';
+import AddtoFB from './components/Firestore/AddtoFB';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
 
 
-const App = () => {
+const App = ({db}) => {
 
   const [show, setShow] = useState(1);
   const [cart, setCart] = useState([]);
   const [warning, setWarning] = useState(false);
   const [price, setPrice] = useState(0);
+
+
+  const collectionRef = firebase.firestore().collection("purchaseOrders")
 
   const handleClick = (item) => {
     let isPresent = false;
@@ -64,11 +70,12 @@ const App = () => {
         <Routes>
           <Route path='/2daEntrega-React/' element={<Home/>} />
           <Route path='/' element={<Home/>} />
-          <Route path='/2daEntrega-React/store/category/all' element={<StoreContainer data={prodList} handlePrice={handlePrice} />} />
+          <Route path='/2daEntrega-React/store/category/all' element={<StoreContainer data={prodList} handlePrice={handlePrice} handleClick={handleClick}/>} />
           <Route path='/2daEntrega-React/store' element={<StoreContainer data={prodList} handlePrice={handlePrice} />} />
           <Route path='/2daEntrega-React/store/product/:product_id' element={<StoreDetail data={prodList} handleClick={handleClick} />} />
           <Route path='/2daEntrega-React/store/category/:category' element={<StoreCategory data={prodList} handleClick={handleClick} />} />
           <Route path='/2daEntrega-React/cart' element={<Cart cart={cart} setCart={setCart} price={price} handlePrice={handlePrice} handleRemove={handleRemove} />} />
+          <Route path='/2daEntrega-React/checkout/pay' element={<AddtoFB cart={cart} price={price} colRef={collectionRef} db={db}/>} />
           <Route path='/2daEntrega-React/checkout' element={<Checkout cart={cart} price={price} />} />
         </Routes>
         <Footer />
