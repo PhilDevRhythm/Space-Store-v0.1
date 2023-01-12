@@ -9,6 +9,7 @@ import StoreContainer from './components/Store/StoreContainer';
 import StoreDetail from './components/Store/StoreDetail';
 import StoreCategory from './components/Store/StoreCategory';
 import Loading from './components/Loading';
+import Home from './components/Home';
 
 
 const App = () => {
@@ -61,9 +62,10 @@ const App = () => {
             </div></div>
         </>}
         <Routes>
-          <Route index element={<StoreContainer data={prodList} handleClick={handleClick} />} />
-          <Route exact path='/2daEntrega-React/' element={<StoreContainer data={prodList} handlePrice={handlePrice} />} />
-          <Route exact path='/2daEntrega-React/store' element={<StoreContainer data={prodList} handlePrice={handlePrice} />} />
+          <Route path='/2daEntrega-React/' element={<Home/>} />
+          <Route path='/' element={<Home/>} />
+          <Route path='/2daEntrega-React/store/category/all' element={<StoreContainer data={prodList} handlePrice={handlePrice} />} />
+          <Route path='/2daEntrega-React/store' element={<StoreContainer data={prodList} handlePrice={handlePrice} />} />
           <Route path='/2daEntrega-React/store/product/:product_id' element={<StoreDetail data={prodList} handleClick={handleClick} />} />
           <Route path='/2daEntrega-React/store/category/:category' element={<StoreCategory data={prodList} handleClick={handleClick} />} />
           <Route path='/2daEntrega-React/cart' element={<Cart cart={cart} setCart={setCart} price={price} handlePrice={handlePrice} handleRemove={handleRemove} />} />

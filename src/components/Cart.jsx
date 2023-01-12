@@ -22,7 +22,7 @@ const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
             <br />
             <div className='text-center text-white text-3xl justify-self-center'>Total price  of your cart is : <code>$ {price} USD</code><br /><br />
                 <div className='flex justify-center'>
-                    <div><Link className='btn btn-outline btn-warning text-xl mx-2' to='/2daEntrega-React/'>Back to Store</Link></div>
+                    <div><Link className='btn btn-outline btn-warning text-xl mx-2' to='/2daEntrega-React/store/category/all'>Back to Store</Link></div>
                     <div><Link className='btn btn-outline btn-warning text-xl mx-2' to={{ pathname: "/2daEntrega-React/checkout", cartProps: { price: { price } } }}>CheckOut</Link>
                     </div>
                 </div>

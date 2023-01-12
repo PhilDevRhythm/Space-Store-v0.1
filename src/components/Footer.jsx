@@ -23,7 +23,7 @@ function Footer() {
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">Cookie policy</a>
         </div>
-        <div><img src="2daEntrega-React/logo_footer.png" alt="logo" /></div>
+        <div><img src="/2daEntrega-React/logo_footer.png" alt="logo" /></div>
       </footer>
 
 

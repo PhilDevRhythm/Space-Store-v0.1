@@ -19,7 +19,7 @@ function Navbar({ setShow, size, price, handlePrice}) {
             <div className="navbar bg-stone-900">
                 <div className="flex-wrap flex-1 p-3 justify-start">
 
-                    <div><Link to="/2daEntrega-React/"><img src='2daEntrega-React/logo.png'alt="logo"/></Link></div>
+                    <div><Link to="/2daEntrega-React/"><img src='/2daEntrega-React/logo.png'alt="logo"/></Link></div>
 
                 </div>
                 <div>
@@ -40,9 +40,9 @@ function Navbar({ setShow, size, price, handlePrice}) {
                                 <span className="font-bold text-lg">{cartLenght} Items</span>
                                 <span className="text-info">Subtotal: $ USD {cartPrice}</span>
                                 <div className="card-actions">
-                                    <Link className='btn' to='/checkout'>CheckOut</Link>
+                                    <Link className='btn' to='/2daEntrega-React/checkout'>CheckOut</Link>
                                     <div></div>
-                                    <Link className="btn" to="/cart" >Your Cart</Link>
+                                    <Link className="btn" to="/2daEntrega-React/cart" >Your Cart</Link>
                                 </div>
                             </div>
                         </div>

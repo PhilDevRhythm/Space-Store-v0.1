@@ -16,7 +16,7 @@ function StoreDetail({ data, handleClick }) {
                     <div key={card.id}>
                         <div className="flex flex-wrap p-5">
                             <div className="card w-70 bg-slate-600 shadow-xl text-white p-5">
-                                <div className='flex justify-center m-5'><Link className='btn btn-outline btn-warning m-3 w-25 ' to='/2daEntrega-React/'>Back to Store</Link></div>
+                                <div className='flex justify-center m-5'><Link className='btn btn-outline btn-warning m-3 w-25 ' to='/2daEntrega-React/store/category/all'>Back to Store</Link></div>
                                 <figure><img src="https://placeimg.com/400/225/arch" alt="test" /></figure>
                                 <div className="card-body ">
                                     <h2 className="card-title">{card.title}</h2>

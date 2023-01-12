@@ -10,14 +10,20 @@ function StoreCategory({ data, handleClick }) {
     let catdata = []
     let result = []
 
-    result = data.filter(items => items.category === category);
 
-    catdata.push(result)
+    if (category !== "all") {
+        result = data.filter(items => items.category === category);
+        catdata.push(result)
+    } else {
+        result = data
+        catdata.push(result)
+    }
 
 
 
 
 
+    console.log();
     return (
         <>
             <StoreContainer data={result} handleClick={handleClick} />
