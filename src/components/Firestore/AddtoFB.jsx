@@ -13,6 +13,7 @@ function AddtoFB({ cart, price, db }) {
 
     const getValue = () => {
         db.collection("purchaseOrders").getDoc().doc()
+        
     }
 
     let counter = 0
