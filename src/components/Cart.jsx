@@ -8,8 +8,7 @@ const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
 
 
     const [count, setCount] = useState(1);
-    const [item, setItem] = useState([]);
-
+    
     useEffect(() => {
         handlePrice();
     })
@@ -31,7 +30,7 @@ const Cart = ({ cart, setCart, price, handlePrice, handleRemove }) => {
                 {
                     cart.map((item) =>
                         <div className="text-center w-70 card card-side h-90 bg-slate-600 shadow-xl text-white p-5 m-4" key={item.id}>
-                            <figure><img className='mask mask-squircle ' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                            <figure><img className='mask mask-squircle ' src={item.img} alt="Shoes" /></figure>
                             <div className="card-body text-justify">
                                 <h2 className="card-title">{item.title}</h2>
                                 <p className=''>{item.text}</p>

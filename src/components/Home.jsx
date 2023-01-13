@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import Loading from './Loading';
 
 function Home() {
 
@@ -68,15 +67,14 @@ function Home() {
         console.log(data)
         console.log(fullDateURL);
     }
-    
-    ;
+
 
 
     return (
         <>
             <div>
                 <div className='text-white text-2xl text-center'>Click on any category to enter the SpaceStore<div></div></div><br /></div>
-            <div className='text-white text-center text-2xl'>Check the latest Space Images created by spacefans like your self!</div>
+            <div className='text-white text-center text-2xl'>Check below the latest Space Images created by spacefans like your self!</div>
             <div className='flex-col m-10'>
                 <div className="card lg:card-side bg-slate-600 text-white p-5 shadow-xl">
                     <figure className='m-5'><img src={homePics.map((i) => i.hdurl)} alt="Album" /></figure>

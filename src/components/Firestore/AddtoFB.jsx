@@ -1,7 +1,3 @@
-import React, { useState } from 'react'
-import { getDoc, doc, collection, setDoc } from "firebase/firestore";
-import firebase from 'firebase/compat/app';
-
 
 function AddtoFB({ cart, price, db }) {
 
@@ -10,23 +6,53 @@ function AddtoFB({ cart, price, db }) {
         db.collection("purchaseOrders")
             .doc()
             .set({ price: price, cart: cart })
-            .then(() => { console.log("worked fine") })
+            .then(() => { getValue() })
+
     }
     createValue()
 
-    
-    
+    const getValue = () => {
+        db.collection("purchaseOrders").getDoc().doc()
+    }
+
+    let counter = 0
+
+
+
     return (
         <>
-            {cart.map((item) => <div className='text-center' key={item.id}>
-                                    <div className='text-center'><h2 className="card-title">{item.title}</h2><br></br>
-                                        <span className='text-center'>Original Price: <span className='line-through'>{item.price}</span> USD</span><br></br>
-                                        <span>Discounted Price: {item.dprice} USD</span><br></br>
-                                        <span>Total Price for this item <span>{item.dprice * item.amount}USD</span></span><br></br>
-                                        <span>Quantity you want: x{item.amount}</span><br></br>
-                                        <br></br>
-                                    </div></div>)}
-            </>
-            )
+            <div className="text-center text-2xl text-white">Thank you for your purchase!</div><br />
+            <div className="overflow-x-auto mx-20">
+                <table className="table table-compact w-full">
+                    <thead className='text-center'>
+                        <tr>
+                            <th></th>
+                            <th className='text-xl'>Name</th>
+                            <th className='text-xl'>Price</th>
+                            <th className='text-xl'>Discounted Price</th>
+                            <th className='text-xl'>Quantity</th>
+                            <th className='text-xl'>Total</th>
+
+                        </tr>
+                    </thead>
+                    {cart.map((item) => <tbody className='text-center' key={item.id}>
+                        <tr>
+                            <th className='text-lg'>{counter += 1}</th>
+                            <td className='text-lg'>{item.title}</td>
+                            <td className='text-lg'>{item.price}</td>
+                            <td className='text-lg'>{item.dprice}</td>
+                            <td className='text-lg'>{item.amount}</td>
+                            <td className='text-lg'>{item.dprice * item.amount}</td>
+
+                        </tr>
+
+                    </tbody>)}
+                </table>
+                <br />
+                <div className="text-center text-2xl text-white">Total of your purchase: ${price} USD</div>
+                <br />
+            </div>
+        </>
+    )
 }
 export default AddtoFB

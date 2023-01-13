@@ -17,7 +17,7 @@ import 'firebase/compat/firestore';
 
 const App = ({db}) => {
 
-  const [show, setShow] = useState(1);
+  // const [show, setShow] = useState(1);
   const [cart, setCart] = useState([]);
   const [warning, setWarning] = useState(false);
   const [price, setPrice] = useState(0);
