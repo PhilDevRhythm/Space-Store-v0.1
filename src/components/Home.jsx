@@ -10,14 +10,14 @@ function Home() {
     const { homePicsId } = useParams()
 
     useEffect(() => {
-        setTimeout(() => { getPics() }, 2000);
+        setTimeout(() => { getPics() }, 100);
     }, [homePicsId]);
     useEffect(() => {
-        setTimeout(() => { getPics1() }, 2000);
+        setTimeout(() => { getPics1() }, 100);
     }, [homePicsId]);
 
     useEffect(() => {
-        setTimeout(() => { getPics2() }, 2000);
+        setTimeout(() => { getPics2() }, 100);
     }, [homePicsId]);
 
 
